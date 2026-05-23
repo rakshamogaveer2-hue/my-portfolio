@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #0a0a0f;
+    color: #fff;
+    min-height: 100vh;
+  }
+  .noise {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .glow {
+    position: fixed; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(99,57,255,0.15) 0%, transparent 70%);
+    top: -200px; left: -100px; pointer-events: none; z-index: 0;
+  }
+  .glow2 {
+    position: fixed; width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(255,80,120,0.08) 0%, transparent 70%);
+    bottom: 0; right: -100px; pointer-events: none; z-index: 0;
+  }
+  .container {
+    max-width: 780px; margin: 0 auto; padding: 60px 32px;
+    position: relative; z-index: 1;
+  }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(99,57,255,0.15); border: 1px solid rgba(99,57,255,0.3);
+    color: #a78bfa; font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    padding: 6px 14px; border-radius: 100px; margin-bottom: 28px;
+    text-transform: uppercase;
+  }
+  .dot { width: 6px; height: 6px; background: #a78bfa; border-radius: 50%; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(48px, 8vw, 80px);
+    font-weight: 800; line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 8px;
+  }
+  .name-accent { color: #7c3aed; }
+  .subtitle {
+    font-size: 18px; color: rgba(255,255,255,0.45);
+    font-weight: 300; margin-bottom: 40px; letter-spacing: 0.01em;
+  }
+  .divider {
+    width: 48px; height: 2px;
+    background: linear-gradient(90deg, #7c3aed, transparent);
+    margin: 48px 0 32px;
+  }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); margin-bottom: 16px; font-weight: 500;
+  }
+  .about-text {
+    font-size: 17px; line-height: 1.75;
+    color: rgba(255,255,255,0.65); max-width: 540px;
+  }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 16px; }
+  .card {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px; padding: 20px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .card:hover { background: rgba(255,255,255,0.07); border-color: rgba(124,58,237,0.4); }
+  .card-icon { font-size: 22px; margin-bottom: 12px; }
+  .card-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; margin-bottom: 4px; }
+  .card-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.5; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .skill-tag {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.75);
+    transition: all 0.2s;
+  }
+  .skill-tag:hover { background: rgba(124,58,237,0.2); border-color: rgba(124,58,237,0.5); color: #c4b5fd; }
+  .footer {
+    margin-top: 64px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-text { font-size: 13px; color: rgba(255,255,255,0.25); }
+  .status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; color: rgba(255,255,255,0.4);
+  }
+  .status-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite; }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="glow"></div>
+<div class="glow2"></div>
+<div class="container">
+  <div class="badge"><span class="dot"></span> Open to opportunities</div>
+  <h1>Hi, I'm<br><span class="name-accent">Raksha</span> 👋</h1>
+  <p class="subtitle">Aspiring developer · India</p>
+
+  <div class="divider"></div>
+  <p class="section-label">About me</p>
+  <p class="about-text">I'm learning HTML, CSS and web development. Currently building my first projects and pushing them to GitHub. On a mission to go from zero to developer.</p>
+
+  <div class="divider"></div>
+  <p class="section-label">Projects</p>
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">🗂️</div>
+      <div class="card-title">Portfolio Page</div>
+      <div class="card-desc">This very site. My first ever project on GitHub.</div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Coming soon</div>
+      <div class="card-desc">Data dashboard · currently in the works.</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <p class="section-label">Skills</p>
+  <div class="skills">
+    <span class="skill-tag">HTML</span>
+    <span class="skill-tag">CSS</span>
+    <span class="skill-tag">Git</span>
+    <span class="skill-tag">GitHub</span>
+    <span class="skill-tag">VS Code</span>
+  </div>
+
+  <div class="footer">
+    <span class="footer-text">Made with ❤️ by Raksha</span>
+    <div class="status"><span class="status-dot"></span> Currently learning</div>
+  </div>
+</div>
+</body>
+</html>
